@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Book</title>
+</head>
+<body>
+<h1>Book Detail View</h1>
+<div>
+    <span>Book ID : </span>
+    <span th:text="${book.bookId}"></span>
+</div>
+<div>
+    <span>제 목 : </span>
+    <span th:text="${book.title}"></span>
+</div>
+<div>
+    <span>저 자 : </span>
+    <span th:text="${book.author}"></span>
+</div>
+<div>
+    <span>출판사 : </span>
+    <span th:text="${book.publisher}"></span>
+</div>
+<div>
+    <span>출판일 : </span>
+    <span th:text="${book.releaseDate}"></span>
+</div>
+<div>
+    <span>ISBN : </span>
+    <span th:text="${book.isbn}"></span>
+</div>
+<br>
+<br>
+<div>
+    <a th:href="@{/updateViewBook/{id}(id=${book.bookId})}" >수정</a> /
+    <a th:href="@{/deleteBook/{id}(id=${book.bookId})}" >삭제</a>
+</div>
+<p><br></p>
+<p><a href="/listBook">List Book</a></p>
+</body>
+</html>
