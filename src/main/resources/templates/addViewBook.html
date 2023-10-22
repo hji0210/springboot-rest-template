@@ -48,8 +48,8 @@
             type: 'POST', // http 요청 방식 (default: ‘GET’)
             data: obj, // 요청 시 포함되어질 데이터 - > json으로 하니 dto / 만약 string이면 controller에서 넘어오는 값
             contentType: 'application/json', // 요청 컨텐트 타입
-            success: function(data, status, xhr) {//data에 return된 값중 body 보통 data에 body적으면됨,status에는 httpstatus.ok(=200)
-                if(data === 'success') {
+            success: function(result) {//data에 return된 값중 body 보통 data에 body적으면됨,status에는 httpstatus.ok(=200)
+                if(result === 'success') {
                     alert('글쓰기 성공!');
                     location.href = '/listBook';
                 }else {

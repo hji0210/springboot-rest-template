@@ -57,24 +57,18 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    @ResponseBody
-    public String addBook(@ModelAttribute Book book, Model model) { // form.serialize() => Book (dto)
-                                                                            // input tag의 값이 다들어감 (키, 밸류로) ex;) let obj = {"bookId", "5", ... "isbn": "5"}
+    public String addBook(@ModelAttribute Book book) { // form.serialize() => Book (dto)
+                                                                    // input tag의 값이 다들어감 (키, 밸류로) ex;) let obj = {"bookId", "5", ... "isbn": "5"}
         ResponseEntity<Book> responseEntity = restTemplate.postForEntity(
                 BASE_URL,
                 book,
                 Book.class
         );
-        HttpStatus statusCode = responseEntity.getStatusCode();
-        //String body = statusCode == HttpStatus.OK ? "success" : "fail";
-        String body = "";
-        if(statusCode == HttpStatus.OK) {
-            body = "success";
-        } else {
-            body = "fail";
+        if(responseEntity.getStatusCode() == HttpStatus.OK) {
+            return "redirect:/listBook";
+        }else {
+            return "fail";
         }
-
-        return body;
     }
 
     @GetMapping("/updateViewBook/{id}")

@@ -11,7 +11,7 @@
              , release_date as "releaseDate"
              , isbn
         from book
-        order by release_date desc
+        order by TO_NUMBER(book_id) desc
     </select>
 
     <select id="getBook" resultType="kr.co.app.model.Book">
