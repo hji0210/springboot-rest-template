@@ -39,29 +39,24 @@
 <p><br></p>
 <p><a href="/">Main</a></p>
 </body>
-<script>
-    $("#addNew").submit(function(e) {
-        e.preventDefault(); // form 제출 막음
-        let obj = $("#addBook").serialize(); // input tage의 값이 다들어감 (키, 밸류로) ex;) let obj = {"bookId", "5", ... "isbn": "5"}
-        $.ajax({
-            url: '/addBook', // 요청이 전송될 URL 주소 - >controller url
-            type: 'POST', // http 요청 방식 (default: ‘GET’)
-            data: obj, // 요청 시 포함되어질 데이터 - > json으로 하니 dto / 만약 string이면 controller에서 넘어오는 값
-            contentType: 'application/json', // 요청 컨텐트 타입
-            success: function(result) {//data에 return된 값중 body 보통 data에 body적으면됨,status에는 httpstatus.ok(=200)
-                if(result === 'success') {
-                    alert('글쓰기 성공!');
-                    location.href = '/listBook';
-                }else {
-                    alert('error');
-                    return false;
-                }
-            },
-            error: function(status, error) {
-                alert('글쓰기 실패!');
-                return false; // 이 페이지에 머물면서 아래 로직을 실행안하고 여기서 그냥 다멈춤
-            }
-        });
-    });
-</script>
+<!--<script th:inline="javascript">-->
+<!--    $("#addNew").submit(function(e) {-->
+<!--        e.preventDefault(); // form 제출 막음-->
+<!--        let obj = $("#addBook").serialize(); // input tage의 값이 다들어감 (키, 밸류로) ex;) let obj = {"bookId", "5", ... "isbn": "5"}-->
+<!--        $.ajax({-->
+<!--            url: '/addBook', // 요청이 전송될 URL 주소 - >controller url-->
+<!--            type: 'POST', // http 요청 방식 (default: ‘GET’)-->
+<!--            data: obj, // 요청 시 포함되어질 데이터 - > json으로 하니 dto / 만약 string이면 controller에서 넘어오는 값-->
+<!--            contentType: 'application/json', // 요청 컨텐트 타입-->
+<!--        }).done(function(result) {//data에 return된 값중 body 보통 data에 body적으면됨,status에는 httpstatus.ok(=200)-->
+<!--            if(result === 'success') {-->
+<!--                alert('글쓰기 성공!');-->
+<!--                location.href = '/listBook';-->
+<!--            }else {-->
+<!--                alert('error');-->
+<!--                return false;-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </html>

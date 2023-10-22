@@ -71,6 +71,22 @@ public class BookController {
         }
     }
 
+//    @PostMapping("/addBook")
+//    @ResponseBody
+//    public ResponseEntity<Object> addBook(@ModelAttribute Book book) { // form.serialize() => Book (dto)
+//                                                                    // input tag의 값이 다들어감 (키, 밸류로) ex;) let obj = {"bookId", "5", ... "isbn": "5"}
+//        ResponseEntity<Book> responseEntity = restTemplate.postForEntity(
+//                BASE_URL,
+//                book,
+//                Book.class
+//        );
+//        if(responseEntity.getStatusCode() == HttpStatus.OK) {
+//            return ResponseEntity.ok("success");
+//        }else {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//        }
+//    }
+
     @GetMapping("/updateViewBook/{id}")
     public String updateViewBook(@PathVariable("id") String id, Model model) {
         ResponseEntity<Book> responseEntity = restTemplate.getForEntity(
